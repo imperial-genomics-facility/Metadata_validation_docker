@@ -75,8 +75,7 @@ RUN git clone https://github.com/imperial-genomics-facility/data-management-pyth
     cd data-management-python;\
     git checkout pipeline_201808;\
     cd ~;\
-    git clone https://github.com/imperial-genomics-facility/Metadata_validation.git;\
-    cd Metadata_validation
+    git clone https://github.com/imperial-genomics-facility/Metadata_validation.git
 
 
 
@@ -84,7 +83,7 @@ ENV PYTHONPATH=/home/$NB_USER/data-management-python:${PYTHONPATH}
 ENV FLASK_INSTANCE_PATH=/home/$NB_USER/tmp
 ENV SAMPLESHEET_SCHEMA=/home/$NB_USER/data-management-python/data/validation_schema/samplesheet_validation.json
 ENV METADATA_SCHEMA=/home/$NB_USER/data-management-python/data/validation_schema/metadata_validation.json
-ENV FLASK_APP=app.py
+ENV FLASK_APP=Metadata_validation/app.py
 ENV HOSTNAME=0.0.0.0
 
 EXPOSE 5000
