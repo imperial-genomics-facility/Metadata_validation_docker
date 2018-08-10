@@ -57,11 +57,11 @@ RUN pip3 install --no-cache-dir  -q \
   pandas \
   jinja2 \
   gviz_api \
-  xlrd \
   jsonschema \
   flask \
   flask_bootstrap \
-  flask_wtf         
+  flask_wtf    \
+  cherrypy
 
 RUN addgroup -S $NB_GROUP && adduser -S -G $NB_GROUP $NB_USER
 
@@ -79,13 +79,12 @@ RUN git clone https://github.com/imperial-genomics-facility/data-management-pyth
 
 
 
-ENV PYTHONPATH=/home/$NB_USER/data-management-python:${PYTHONPATH}
+ENV PYTHONPATH=/home/$NB_USER/data-management-python:/home/$NB_USER/Metadata_validation:${PYTHONPATH}
 ENV FLASK_INSTANCE_PATH=/home/$NB_USER/tmp
 ENV SAMPLESHEET_SCHEMA=/home/$NB_USER/data-management-python/data/validation_schema/samplesheet_validation.json
 ENV METADATA_SCHEMA=/home/$NB_USER/data-management-python/data/validation_schema/metadata_validation.json
-ENV FLASK_APP=Metadata_validation/app.py
 ENV HOSTNAME=0.0.0.0
 
 EXPOSE 5000
 
-CMD ["flask", "run","--host=$HOSTNAME"]
+CMD ["python", "/home/$NB_USER/Metadata_validation/server.py","&"]
