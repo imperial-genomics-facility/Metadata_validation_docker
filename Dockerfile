@@ -54,7 +54,7 @@ RUN apk add --no-cache --force-broken-world \
     ca-certificates      
 
 RUN pip3 install --no-cache-dir  -q \
-  pandas \
+  pandas==0.23.0 \
   jinja2 \
   gviz_api \
   jsonschema \
