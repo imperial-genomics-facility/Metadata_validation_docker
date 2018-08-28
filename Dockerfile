@@ -54,7 +54,7 @@ RUN apk add --no-cache --force-broken-world \
     ca-certificates      
 
 RUN pip3 install --no-cache-dir  -q \
-  pandas \
+  pandas==0.23.0 \
   jinja2 \
   gviz_api \
   jsonschema \
@@ -73,7 +73,7 @@ ENV TMPDIR=/home/$NB_USER/tmp
 
 RUN git clone https://github.com/imperial-genomics-facility/data-management-python.git ;\
     cd data-management-python;\
-    git checkout pipeline_201808;\
+    git checkout analysis_seed_201808;\
     cd ~;\
     git clone https://github.com/imperial-genomics-facility/Metadata_validation.git
 
@@ -87,4 +87,4 @@ ENV HOSTNAME=0.0.0.0
 
 EXPOSE 5000
 
-CMD ["python", "/home/$NB_USER/Metadata_validation/server.py","&"]
+CMD ["python", "Metadata_validation/server.py","&"]
