@@ -87,4 +87,4 @@ ENV HOSTNAME=0.0.0.0
 
 EXPOSE 5000
 
-CMD ["python", "/home/$NB_USER/Metadata_validation/server.py","&"]
+CMD ["python", "Metadata_validation/server.py","&"]
