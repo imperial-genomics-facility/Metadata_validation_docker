@@ -73,7 +73,7 @@ ENV TMPDIR=/home/$NB_USER/tmp
 
 RUN git clone https://github.com/imperial-genomics-facility/data-management-python.git ;\
     cd data-management-python;\
-    git checkout pipeline_201808;\
+    git checkout analysis_seed_201808;\
     cd ~;\
     git clone https://github.com/imperial-genomics-facility/Metadata_validation.git
 
