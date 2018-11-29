@@ -11,10 +11,9 @@ ENV NB_UID 1000
 USER root
 WORKDIR /root/
 
-RUN echo "http://mirror1.hs-esslingen.de/pub/Mirrors/alpine/v3.7/main" >> /etc/apk/repositories; \
-    echo "http://mirror1.hs-esslingen.de/pub/Mirrors/alpine/v3.7/community" >> /etc/apk/repositories; \
-    echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories; \
-    echo "http://mirror1.hs-esslingen.de/pub/Mirrors/alpine/edge/testing" >> /etc/apk/repositories
+RUN echo "http://alpinelinux.mirror.iweb.com/v3.7/main" >> /etc/apk/repositories; \
+    echo "http://alpinelinux.mirror.iweb.com/v3.7/community" >> /etc/apk/repositories; \
+    echo "http://alpinelinux.mirror.iweb.com/edge/testing" >> /etc/apk/repositories
 
 RUN apk update; \
     apk add --upgrade apk-tools; \
@@ -73,7 +72,7 @@ ENV TMPDIR=/home/$NB_USER/tmp
 
 RUN git clone https://github.com/imperial-genomics-facility/data-management-python.git ;\
     cd data-management-python;\
-    git checkout analysis_seed_201808;\
+    git checkout alignment_201811;\
     cd ~;\
     git clone https://github.com/imperial-genomics-facility/Metadata_validation.git
 
