@@ -7,6 +7,8 @@ ENTRYPOINT []
 ENV NB_USER vmuser
 ENV NB_GROUP vmuser
 ENV NB_UID 1000
+ENV FLASK_APP igftools.py
+ENV FLASK_CONFIG production
 
 USER root
 WORKDIR /root/
@@ -53,14 +55,16 @@ RUN apk add --no-cache --force-broken-world \
     ca-certificates      
 
 RUN pip3 install --no-cache-dir  -q \
-  pandas==0.23.0 \
+  pandas==0.24.1 \
   jinja2 \
   gviz_api \
   jsonschema \
   flask \
-  flask_bootstrap \
+  flask_bootstrap4 \
   flask_wtf    \
-  cherrypy
+  gunicorn \
+  paramiko==2.4.2
+
 
 RUN addgroup -S $NB_GROUP && adduser -S -G $NB_GROUP $NB_USER
 
@@ -70,11 +74,14 @@ WORKDIR /home/$NB_USER
 RUN mkdir -p /home/$NB_USER/tmp 
 ENV TMPDIR=/home/$NB_USER/tmp
 
-RUN git clone https://github.com/imperial-genomics-facility/data-management-python.git ;\
-    cd data-management-python;\
-    git checkout master;\
-    cd ~;\
-    git clone https://github.com/imperial-genomics-facility/Metadata_validation.git
+RUN git clone https://github.com/imperial-genomics-facility/data-management-python.git && \
+    cd data-management-python && \
+    git checkout metadata_201908 && \
+    cd ~ && \
+    git clone https://github.com/imperial-genomics-facility/Metadata_validation.git && \
+    cd Metadata_validation && \
+    git checkout v2 && \
+    cd ~
 
 
 
@@ -84,6 +91,5 @@ ENV SAMPLESHEET_SCHEMA=/home/$NB_USER/data-management-python/data/validation_sch
 ENV METADATA_SCHEMA=/home/$NB_USER/data-management-python/data/validation_schema/metadata_validation.json
 ENV HOSTNAME=0.0.0.0
 
-EXPOSE 5000
-
-CMD ["python", "Metadata_validation/server.py","&"]
+WORKDIR /home/$NB_USER/Metadata_validation
+CMD gunicorn -d $HOSTNAME:$PORT igftools:app

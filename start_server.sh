@@ -1,0 +1,1 @@
+gunicorn -d 0.0.0.0:8000 igftools:app
