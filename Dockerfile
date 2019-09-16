@@ -56,7 +56,7 @@ RUN apk add --no-cache --force-broken-world \
 
 RUN pip3 install --upgrade pip --no-cache-dir -q && \
     pip3 install --no-cache-dir  -q \
-    numpy \
+    numpy==1.16.3 \
     pandas==0.24.1 \
     jinja2 \
     gviz_api \
