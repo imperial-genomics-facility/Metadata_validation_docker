@@ -54,8 +54,9 @@ RUN apk add --no-cache --force-broken-world \
     openssl                \
     ca-certificates      
 
-RUN pip3 install --upgrade pip && \
+RUN pip3 install --upgrade pip --no-cache-dir -q && \
     pip3 install --no-cache-dir  -q \
+    numpy \
     pandas==0.24.1 \
     jinja2 \
     gviz_api \
