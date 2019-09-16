@@ -54,16 +54,17 @@ RUN apk add --no-cache --force-broken-world \
     openssl                \
     ca-certificates      
 
-RUN pip3 install --no-cache-dir  -q \
-  pandas==0.24.1 \
-  jinja2 \
-  gviz_api \
-  jsonschema \
-  flask \
-  flask_bootstrap4 \
-  flask_wtf    \
-  gunicorn \
-  paramiko==2.4.2
+RUN pip3 install --upgrade pip && \
+    pip3 install --no-cache-dir  -q \
+    pandas==0.24.1 \
+    jinja2 \
+    gviz_api \
+    jsonschema \
+    flask \
+    flask_bootstrap4 \
+    flask_wtf    \
+    gunicorn \
+    paramiko==2.4.2
 
 
 RUN addgroup -S $NB_GROUP && adduser -S -G $NB_GROUP $NB_USER
