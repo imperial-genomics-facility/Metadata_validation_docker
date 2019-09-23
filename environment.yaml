@@ -1,0 +1,17 @@
+name: server
+channels:
+  - conda-forge
+dependencies:
+  - python=3.6.0
+  - pip
+  - pip:
+      - numpy==1.16.3
+      - pandas==0.24.1
+      - jinja2
+      - gviz_api
+      - jsonschema
+      - flask
+      - flask_bootstrap4
+      - flask_wtf
+      - gunicorn
+      - paramiko==2.4.2

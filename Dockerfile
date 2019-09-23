@@ -54,18 +54,7 @@ RUN apk add --no-cache --force-broken-world \
     openssl                \
     ca-certificates      
 
-RUN pip3 install --upgrade pip --no-cache-dir -q && \
-    pip3 install --no-cache-dir  -q \
-    numpy==1.16.3 \
-    pandas==0.24.1 \
-    jinja2 \
-    gviz_api \
-    jsonschema \
-    flask \
-    flask_bootstrap4 \
-    flask_wtf    \
-    gunicorn \
-    paramiko==2.4.2
+
 
 
 RUN addgroup -S $NB_GROUP && adduser -S -G $NB_GROUP $NB_USER
@@ -73,8 +62,18 @@ RUN addgroup -S $NB_GROUP && adduser -S -G $NB_GROUP $NB_USER
 USER $NB_USER
 WORKDIR /home/$NB_USER
 
-RUN mkdir -p /home/$NB_USER/tmp 
+RUN mkdir -p /home/$NB_USER/tmp
 ENV TMPDIR=/home/$NB_USER/tmp
+
+RUN  wget --no-check-certificate https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
+     bash Miniconda3-latest-Linux-x86_64.sh -b
+ENV PATH $PATH:/home/$NB_USER/miniconda3/bin/
+COPY environment.yaml /home/$NB_USER/environment.yaml
+RUN conda env create -q --file  /home/$NB_USER/environment.yaml
+RUN echo ". /home/$NB_USER/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate server" >> ~/.bashrc
+ENV LC_ALL C.UTF-8
+ENV LANG C.UTF-8
 
 RUN git clone https://github.com/imperial-genomics-facility/data-management-python.git && \
     cd data-management-python && \
@@ -85,7 +84,8 @@ RUN git clone https://github.com/imperial-genomics-facility/data-management-pyth
     git checkout v2 && \
     cd ~
 
-
+RUN rm -rf /home/$NB_USER/tmp
+RUN mkdir -p /home/$NB_USER/tmp
 
 ENV PYTHONPATH=/home/$NB_USER/data-management-python:/home/$NB_USER/Metadata_validation:${PYTHONPATH}
 ENV FLASK_INSTANCE_PATH=/home/$NB_USER/tmp
