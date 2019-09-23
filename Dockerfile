@@ -52,7 +52,8 @@ RUN apk add --no-cache --force-broken-world \
     libreadline6           \
     libopenblas-dev        \
     openssl                \
-    ca-certificates      
+    ca-certificates       \
+    bash
 
 
 
