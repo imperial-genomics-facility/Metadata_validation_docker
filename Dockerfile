@@ -13,8 +13,8 @@ ENV FLASK_CONFIG production
 USER root
 WORKDIR /root/
 
-RUN echo "http://alpinelinux.mirror.iweb.com/v3.7/main" >> /etc/apk/repositories; \
-    echo "http://alpinelinux.mirror.iweb.com/v3.7/community" >> /etc/apk/repositories; \
+RUN echo "http://alpinelinux.mirror.iweb.com/v3.9/main" >> /etc/apk/repositories; \
+    echo "http://alpinelinux.mirror.iweb.com/v3.9/community" >> /etc/apk/repositories; \
     echo "http://alpinelinux.mirror.iweb.com/edge/testing" >> /etc/apk/repositories
 
 RUN apk update && \
