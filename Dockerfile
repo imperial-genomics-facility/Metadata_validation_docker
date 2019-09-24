@@ -20,45 +20,39 @@ RUN echo "http://alpinelinux.mirror.iweb.com/v3.9/main" >> /etc/apk/repositories
 RUN apk update && \
     apk add --upgrade apk-tools && \
     apk --update add --no-cache --force-broken-world \
-        gcc \
-        g++ \
-        .build-deps \
-        build-base \
-        libbz2-dev \
-        libopenblas-dev \
-        libreadline6 \
-        libreadline6-dev \
-        libsqlite3-dev \
-        libssl-dev \
-        locales \
-        texlive-xetex \
-        zlib1g-dev 
-        
-      
-RUN apk add --no-cache --force-broken-world \
-    git                    \
-    locales                \
-    curl                   \
-    wget                   \
-    make                   \
-    g++                    \
-    patch                  \
-    build-essential        \
-    libssl-dev             \
-    zlib1g-dev             \
-    libbz2-dev             \
-    libsqlite3-dev         \
-    libssl-dev             \
-    libreadline6           \
-    libopenblas-dev        \
-    openssl                \
-    ca-certificates       \
-    bash
+        gcc               \
+        g++               \
+        .build-deps       \
+        build-base        \
+        libbz2-dev        \
+        libopenblas-dev   \
+        libreadline6      \
+        libreadline6-dev  \
+        libsqlite3-dev    \
+        libssl-dev        \
+        locales           \
+        texlive-xetex     \
+        zlib1g-dev        \
+        git               \
+        locales           \
+        curl              \
+        wget              \
+        make              \
+        zlib1g-dev        \
+        libbz2-dev        \
+        openssl           \
+        ca-certificates   \
+        bash              \
+        gfortran          \
+        libgfortran       \
+        libgcc            \
+        libstdc++         
+
 
 RUN pip install --no-cache-dir  -q \
       numpy==1.17.2
 
-RUN pip install --no-cache-dir  -q \
+RUN pip install --no-cache-dir   \
       pandas==0.24.1 \
       jinja2 \
       gviz_api \
