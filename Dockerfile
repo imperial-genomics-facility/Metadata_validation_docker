@@ -41,6 +41,7 @@ RUN apk update && \
         zlib1g-dev        \
         libbz2-dev        \
         openssl           \
+        openssl-dev       \
         ca-certificates   \
         bash              \
         gfortran          \
