@@ -57,7 +57,7 @@ RUN apk add --no-cache --force-broken-world \
 
 
 RUN pip install --no-cache-dir  -q \
-      numpy==1.16.3 \
+      numpy==1.17.2 \
       pandas==0.24.1 \
       jinja2 \
       gviz_api \
