@@ -46,7 +46,8 @@ RUN apk update && \
         gfortran          \
         libgfortran       \
         libgcc            \
-        libstdc++         
+        libstdc++         \
+        libffi-dev
 
 
 RUN pip install --no-cache-dir  -q \
