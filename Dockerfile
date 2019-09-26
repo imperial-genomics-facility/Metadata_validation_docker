@@ -56,12 +56,21 @@ RUN pip install --no-cache-dir  -q \
 
 RUN pip install --no-cache-dir   \
       pandas==0.24.1 \
-      jinja2 \
       gviz_api \
-      jsonschema \
-      flask \
-      flask_bootstrap4 \
-      flask_wtf \
+      jsonschema==3.0.2 \
+      Flask==1.1.1 \
+      Flask-Bootstrap4==4.0.2 \
+      Flask-AppBuilder==2.1.10 \
+      Flask-Migrate==2.0.4 \
+      Flask-Moment==0.5.1 \
+      Flask-SQLAlchemy==2.4.0 \
+      Flask-WTF==0.14.2 \
+      alembic==0.9.3 \
+      SQLAlchemy==1.1.11 \
+      SQLAlchemy-Utils==0.34.2 \
+      Werkzeug==0.15.5 \
+      WTForms==2.1 \
+      Jinja2==2.10.1 \
       gunicorn \
       paramiko==2.4.2
 
