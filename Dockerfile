@@ -64,12 +64,13 @@ RUN pip install --no-cache-dir   \
       Flask-Migrate==2.0.4 \
       Flask-Moment==0.5.1 \
       Flask-SQLAlchemy==2.4.0 \
+      pymysql==0.9.3 \
       Flask-WTF==0.14.2 \
       alembic==0.9.3 \
       SQLAlchemy==1.1.11 \
       SQLAlchemy-Utils==0.34.2 \
       Werkzeug==0.15.5 \
-      WTForms==2.1 \
+      WTForms==2.2 \
       Jinja2==2.10.1 \
       gunicorn \
       paramiko==2.4.2
