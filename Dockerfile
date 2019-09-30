@@ -103,4 +103,4 @@ ENV METADATA_SCHEMA=/home/$NB_USER/data-management-python/data/validation_schema
 ENV HOSTNAME=0.0.0.0
 
 WORKDIR /home/$NB_USER/Metadata_validation
-CMD gunicorn -d $HOSTNAME:$PORT igftools:app
+CMD gunicorn -b $HOSTNAME:$PORT igftools:app
