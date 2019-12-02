@@ -1,6 +1,6 @@
 FROM python:3.6-alpine3.9
-MAINTAINER reach4avik@yahoo.com
-LABEL maintainer="avikdatta"
+MAINTAINER "igf[at]imperial.ac.uk"
+LABEL maintainer="igf"
 
 ENTRYPOINT []
 
