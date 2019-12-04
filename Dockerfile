@@ -95,7 +95,6 @@ RUN git clone https://github.com/imperial-genomics-facility/data-management-pyth
 
 RUN rm -rf /home/$NB_USER/tmp && \
     mkdir -p /home/$NB_USER/tmp
-
 ENV PYTHONPATH=/home/$NB_USER/data-management-python:/home/$NB_USER/Metadata_validation:${PYTHONPATH}
 ENV FLASK_INSTANCE_PATH=/home/$NB_USER/tmp
 ENV SAMPLESHEET_SCHEMA=/home/$NB_USER/data-management-python/data/validation_schema/samplesheet_validation.json
