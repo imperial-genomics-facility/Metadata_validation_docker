@@ -83,7 +83,6 @@ WORKDIR /home/$NB_USER
 RUN mkdir -p /home/$NB_USER/tmp
 ENV TMPDIR=/home/$NB_USER/tmp
 
-
 RUN git clone https://github.com/imperial-genomics-facility/data-management-python.git && \
     cd data-management-python && \
     git checkout metadata_201908 && \
