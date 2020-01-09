@@ -85,11 +85,11 @@ ENV TMPDIR=/home/$NB_USER/tmp
 
 RUN git clone https://github.com/imperial-genomics-facility/data-management-python.git && \
     cd data-management-python && \
-    git checkout metadata_201908 && \
+    git checkout master && \
     cd ~ && \
     git clone https://github.com/imperial-genomics-facility/Metadata_validation.git && \
     cd Metadata_validation && \
-    git checkout v2 && \
+    git checkout master && \
     cd ~
 
 RUN rm -rf /home/$NB_USER/tmp && \
