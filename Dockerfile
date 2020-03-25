@@ -77,8 +77,11 @@ RUN pip install --no-cache-dir   \
 
 RUN addgroup -S $NB_GROUP && adduser -S -G $NB_GROUP $NB_USER
 
+COPY data.sqlite /home/$NB_USER/data.sqlite
+RUN chown ${NB_UID} /home/$NB_USER/data.sqlite
 USER $NB_USER
 WORKDIR /home/$NB_USER
+
 
 RUN mkdir -p /home/$NB_USER/tmp
 ENV TMPDIR=/home/$NB_USER/tmp
